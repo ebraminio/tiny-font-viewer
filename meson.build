@@ -8,14 +8,14 @@ project('tiny-font-viewer', 'c',
     'default_library=static',
   ])
 
-harfbuzz = subproject('harfbuzz', default_options : ['experimental_api=true',
-  'glib=disabled', 'gobject=disabled', 'cairo=disabled',
+harfbuzz = subproject('harfbuzz', default_options : ['default_library=static',
+  'experimental_api=true', 'glib=disabled', 'gobject=disabled', 'cairo=disabled',
   'fontconfig=disabled', 'icu=disabled', 'freetype=disabled',
   'introspection=disabled', 'gtk_doc=disabled', 'tests=disabled'])
 harfbuzz_dep = harfbuzz.get_variable('libharfbuzz_dep')
 harfbuzz_incsrc = harfbuzz.get_variable('incsrc')
 
-libui = subproject('libui')
+libui = subproject('libui', default_options : ['default_library=static'])
 libui_deps = libui.get_variable('libui_deps')
 libui_libui = libui.get_variable('libui_libui')
 
